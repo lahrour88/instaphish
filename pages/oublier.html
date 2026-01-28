@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trouvez votre compte - Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --border-color: #dbdbdb;
+            --input-bg: #fafafa;
+            --button-bg: #0095f6;
+            --button-hover: #1877f2;
+            --link-color: #0095f6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #1d1d25;
+                --bg-secondary: #1c2a33;
+                --text-primary: #f5f5f5;
+                --text-secondary: #a8a8a8;
+                --border-color: #344f5c;
+                --input-bg: #1c2a33;
+                --button-bg: #0064E0;
+                --button-hover: #1877f2;
+                --link-color: #e0f1ff;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0;
+        }
+
+        .recovery-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 40px 20px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .recovery-link {
+            font-size: 13px;
+            color: var(--link-color);
+            margin-bottom: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .recovery-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: var(--input-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-primary);
+            outline: none;
+            height: 48px;
+            margin-bottom: 10px;
+        }
+
+        .input-field::placeholder {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .input-field:focus {
+            border-color: var(--text-secondary);
+        }
+
+        .continue-button {
+            width: 100%;
+            height: 44px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .continue-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .continue-button:active {
+            opacity: 0.8;
+        }
+
+        .search-alternative {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .search-alternative:hover {
+            text-decoration: underline;
+        }
+
+        .divider-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            gap: 12px;
+        }
+
+        .divider {
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .facebook-button {
+            width: 100%;
+            height: 44px;
+            background-color: transparent;
+            color: var(--link-color);
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .facebook-button:hover {
+            background-color: var(--input-bg);
+            border-color: var(--link-color);
+        }
+
+        .facebook-icon {
+            font-size: 18px;
+        }
+
+        .signup-box {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .signup-box a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .meta-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .meta-logo img {
+            height: 20px;
+            width: auto;
+        }
+
+        @media (max-width: 450px) {
+            .back-button {
+                left: 15px;
+                top: 15px;
+            }
+
+            .recovery-box {
+                padding: 30px 16px;
+                border: none;
+                background-color: transparent;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .signup-box {
+                padding: 20px 16px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button">></button>
+
+    <div class="container">
+        <!-- Recovery Box -->
+        <div class="recovery-box">
+            <div class="title">Trouvez votre compte</div>
+            
+            <div class="subtitle">
+                Entrez votre numéro de mobile ou Email
+            </div>
+
+            <a class="recovery-link">
+                Vous ne parvenez pas à réinitialiser votre mot de passe ?
+            </a>
+
+            <!-- Form -->
+            <form id="recoveryForm" action="/oublier" method="POST">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        class="input-field" 
+                        name="email"
+                        placeholder="Numéro de mobile ou Email"
+                        required
+                    >
+                </div>
+                <button type="submit" class="continue-button">Continuer</button>
+            </form>
+
+            <a class="search-alternative">
+                Rechercher plutôt par adresse e-mail ou no...
+            </a>
+
+            <!-- Divider -->
+            <div class="divider-container">
+                <div class="divider"></div>
+                <div class="divider-text">OU</div>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Facebook Button -->
+            <button class="facebook-button">
+                <span class="facebook-icon">f</span>
+                Se connecter avec Facebook
+            </button>
+        </div>
+
+        <!-- Sign Up Box -->
+        <div class="signup-box">
+            Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
+        </div>
+
+        <!-- Meta Logo -->
+        <div class="footer">
+            <div class="meta-logo">
+                <img src="../static/Logo2.png" alt="Meta">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back button functionality
+        document.querySelector('.back-button').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Facebook login
+        document.querySelector('.facebook-button').addEventListener('click', () => {
+            console.log('Facebook login clicked');
+        });
+    </script>
+</body>
+</html>

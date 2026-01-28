@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisissez un mode de connexion - Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --border-color: #dbdbdb;
+            --input-bg: #fafafa;
+            --button-bg: #0095f6;
+            --button-hover: #1877f2;
+            --link-color: #0095f6;
+            --selected-bg: rgba(0, 149, 246, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #1d1d25;
+                --bg-secondary: #1c2a33;
+                --text-primary: #f5f5f5;
+                --text-secondary: #a8a8a8;
+                --border-color: #344f5c;
+                --input-bg: #1c2a33;
+                --button-bg: #0064E0;
+                --button-hover: #1877f2;
+                --link-color: #e0f1ff;
+                --selected-bg: rgba(0, 100, 224, 0.15);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0;
+        }
+
+        .recovery-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 40px 20px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .options-container {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .recovery-option {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .recovery-option:last-child {
+            border-bottom: none;
+        }
+
+        .recovery-option:hover {
+            background-color: var(--input-bg);
+        }
+
+        .recovery-option.selected {
+            background-color: var(--selected-bg);
+        }
+
+        .recovery-option-content {
+            flex: 1;
+        }
+
+        .recovery-option-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .recovery-option-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .recovery-option-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            margin-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .recovery-option.selected .recovery-option-radio {
+            border-color: var(--button-bg);
+            background-color: var(--button-bg);
+        }
+
+        .recovery-option.selected .recovery-option-radio::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .help-text {
+            text-align: center;
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+
+        .help-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .help-link:hover {
+            text-decoration: underline;
+        }
+
+        .continue-button {
+            width: 100%;
+            height: 44px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .continue-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .continue-button:active {
+            opacity: 0.8;
+        }
+
+        .signup-box {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .signup-box a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .meta-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .meta-logo img {
+            height: 20px;
+            width: auto;
+        }
+
+        @media (max-width: 450px) {
+            .back-button {
+                left: 15px;
+                top: 15px;
+            }
+
+            .recovery-box {
+                padding: 30px 16px;
+                border: none;
+                background-color: transparent;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .signup-box {
+                padding: 20px 16px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button">‹</button>
+
+    <div class="container">
+        <!-- Recovery Box -->
+        <div class="recovery-box">
+            <div class="title">Choisissez un mode de connexion</div>
+            
+            <!-- Options Container -->
+            <div class="options-container">
+                <!-- Option 1: Email -->
+                <div class="recovery-option selected" data-method="email">
+                    <div class="recovery-option-content">
+                        <div class="recovery-option-title">Recevoir le code ou le lien par e-mail</div>
+                        <div class="recovery-option-subtitle">a*********e@z*******.com</div>
+                    </div>
+                    <div class="recovery-option-radio"></div>
+                </div>
+
+                <!-- Option 2: SMS -->
+                <div class="recovery-option" data-method="sms">
+                    <div class="recovery-option-content">
+                        <div class="recovery-option-title">Recevoir le code ou le lien par SMS</div>
+                        <div class="recovery-option-subtitle">+212 616-460988</div>
+                        <div class="recovery-option-subtitle" style="color: var(--text-secondary); margin-top: 4px; font-size: 12px;">Des frais d'opérateur peuvent s'appliquer</div>
+                    </div>
+                    <div class="recovery-option-radio"></div>
+                </div>
+
+                <!-- Option 3: Password -->
+                <div class="recovery-option" data-method="password">
+                    <div class="recovery-option-content">
+                        <div class="recovery-option-title">Entrer le mot de passe pour se connecter</div>
+                    </div>
+                    <div class="recovery-option-radio"></div>
+                </div>
+            </div>
+
+            <!-- Help Text -->
+            <div class="help-text">
+                <a class="help-link">Aucun accès à ces options ?</a>
+            </div>
+
+            <!-- Continue Button -->
+            <button class="continue-button">Continuer</button>
+        </div>
+
+        <!-- Sign Up Box -->
+        <div class="signup-box">
+            Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
+        </div>
+
+        <!-- Meta Logo -->
+        <div class="footer">
+            <div class="meta-logo">
+                <img src="../static/Logo2.png" alt="Meta">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back button functionality
+        document.querySelector('.back-button').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Option selection
+        const options = document.querySelectorAll('.recovery-option');
+        let selectedMethod = 'email';
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                options.forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                selectedMethod = option.dataset.method;
+            });
+        });
+
+        // Continue button
+        document.querySelector('.continue-button').addEventListener('click', () => {
+            console.log('Selected method:', selectedMethod);
+            // Handle navigation based on selected method
+        });
+    </script>
+</body>
+</html>

